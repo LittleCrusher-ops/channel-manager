@@ -1,0 +1,635 @@
+{
+  "updated_at": "2026-06-16T01:24:27.893821+00:00",
+  "reservations": [
+    {
+      "id": "1418fb94e984-88faf7fe7a8cc58d4d8284407529ff88@airbnb.com",
+      "studio": "studio2",
+      "source": "airbnb",
+      "start": "2026-08-12",
+      "end": "2026-08-14",
+      "name": "Reserved",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "7f662ec65913-ef73b805ce869451587a3ddd59b09db5@airbnb.com",
+      "studio": "studio2",
+      "source": "airbnb",
+      "start": "2026-06-14",
+      "end": "2026-06-22",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "7f662ec65913-bef3dd0066332d1434f2e5e8c2628790@airbnb.com",
+      "studio": "studio2",
+      "source": "airbnb",
+      "start": "2026-06-23",
+      "end": "2026-07-11",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "7f662ec65913-14158d45727526145ef514139eeb669e@airbnb.com",
+      "studio": "studio2",
+      "source": "airbnb",
+      "start": "2026-07-12",
+      "end": "2026-07-14",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "7f662ec65913-bcf8ad2890c14f2cddfc15092f576e5f@airbnb.com",
+      "studio": "studio2",
+      "source": "airbnb",
+      "start": "2026-07-15",
+      "end": "2026-07-17",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "7f662ec65913-bc0d014812921636cb28fe8a51370988@airbnb.com",
+      "studio": "studio2",
+      "source": "airbnb",
+      "start": "2026-07-19",
+      "end": "2026-07-20",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "1418fb94e984-51bdac9e96af55162f8adeae5ff1e12d@airbnb.com",
+      "studio": "studio3",
+      "source": "airbnb",
+      "start": "2026-07-13",
+      "end": "2026-07-17",
+      "name": "Reserved",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "1418fb94e984-9e3e5a0072a7b0f89f8048a6d45ce84e@airbnb.com",
+      "studio": "studio3",
+      "source": "airbnb",
+      "start": "2026-07-18",
+      "end": "2026-07-25",
+      "name": "Reserved",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "1418fb94e984-89f9beab87d88637a172db54bf6df479@airbnb.com",
+      "studio": "studio3",
+      "source": "airbnb",
+      "start": "2026-08-10",
+      "end": "2026-08-13",
+      "name": "Reserved",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "1418fb94e984-9d7026703f250737c11efb401dbb047c@airbnb.com",
+      "studio": "studio3",
+      "source": "airbnb",
+      "start": "2026-08-13",
+      "end": "2026-08-14",
+      "name": "Reserved",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "1418fb94e984-73a29599f54e9ada92535c37d7a084d4@airbnb.com",
+      "studio": "studio3",
+      "source": "airbnb",
+      "start": "2026-08-14",
+      "end": "2026-08-15",
+      "name": "Reserved",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "1418fb94e984-4924cc2bc3519d3c2e90116813d0d6e2@airbnb.com",
+      "studio": "studio3",
+      "source": "airbnb",
+      "start": "2026-08-17",
+      "end": "2026-08-20",
+      "name": "Reserved",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "1418fb94e984-4942ca5205382bf8bf0c9ac61c08cb8e@airbnb.com",
+      "studio": "studio3",
+      "source": "airbnb",
+      "start": "2026-08-20",
+      "end": "2026-08-21",
+      "name": "Reserved",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "1418fb94e984-508a0e8522fc235498153afa5d967527@airbnb.com",
+      "studio": "studio3",
+      "source": "airbnb",
+      "start": "2026-09-19",
+      "end": "2026-09-20",
+      "name": "Reserved",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "1418fb94e984-76441141f05bc32cd158e1eb5baa9be4@airbnb.com",
+      "studio": "studio3",
+      "source": "airbnb",
+      "start": "2027-02-07",
+      "end": "2027-02-10",
+      "name": "Reserved",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "7f662ec65913-ef73b805ce869451587a3ddd59b09db5@airbnb.com",
+      "studio": "studio3",
+      "source": "airbnb",
+      "start": "2026-06-14",
+      "end": "2026-06-15",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "7f662ec65913-f00c125bd8e10e6ae40bdb4b36959346@airbnb.com",
+      "studio": "studio3",
+      "source": "airbnb",
+      "start": "2026-06-16",
+      "end": "2026-06-17",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "7f662ec65913-b2e7ffb392c00de1d9f4b2048f2de806@airbnb.com",
+      "studio": "studio3",
+      "source": "airbnb",
+      "start": "2026-06-22",
+      "end": "2026-07-13",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "30eccc3a6803def5584f262bc89c295f@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-06-22",
+      "end": "2026-06-23",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "2d250e35a62fedaefc101444c63191c2@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-07-11",
+      "end": "2026-07-12",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "321a523ac97df7f13527266d6b9ad794@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-07-17",
+      "end": "2026-07-19",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "7ad6dc6e930f92297f973f19c9f466fe@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-07-20",
+      "end": "2026-07-21",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "45df5b84191ee4662a9b470552df3573@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-07-22",
+      "end": "2026-07-23",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "5fc9809425e7db36c5ff709160c474ca@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-07-23",
+      "end": "2026-07-24",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "b9998c3c1905f4a099f2bcb61b64feaf@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-07-24",
+      "end": "2026-07-26",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "47fe2dab9b9dcece4970ccc91d75d9ee@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-07-26",
+      "end": "2026-07-27",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "ab680fa94177e1427a7d22640071329e@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-07-27",
+      "end": "2026-07-28",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "2a535771230469f756e2370df43588bc@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-08-01",
+      "end": "2026-08-02",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "61f47d230f6c436d3fce958956bfccc1@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-08-02",
+      "end": "2026-08-03",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "95ac9b2a985156e67e0d8f39b593a7f6@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-08-03",
+      "end": "2026-08-04",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "33d05ea0a1a9501217ee76a84b5c3f02@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-08-05",
+      "end": "2026-08-06",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "a8f50347feffb42b5deca4940a7955d9@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-08-06",
+      "end": "2026-08-07",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "0fc5fba9754fbcd09e47d02da50c9cbd@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-08-08",
+      "end": "2026-08-09",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "079588fb7beb70f97381e82f4219e153@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-08-09",
+      "end": "2026-08-10",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "768c5c0111eb7368ab57af0a2543a5ad@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-08-10",
+      "end": "2026-08-11",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "1a264dbbe1fcf4d51da887e9d4f290ec@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-08-14",
+      "end": "2026-08-15",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "2ac67959fa42693ccb37131c9040fb60@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-08-15",
+      "end": "2026-08-16",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "3271c4bda1b3c6475f0d4d04e0f4627f@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-08-17",
+      "end": "2026-08-22",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "571c7e4b13077cdde4a9bbb0205fd82d@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-08-24",
+      "end": "2026-08-26",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "08385f56a3517003140a132daf76ceef@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-08-27",
+      "end": "2026-08-28",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "16c068db5c37cf503cdd3a5f4090af0b@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-08-29",
+      "end": "2026-08-30",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "f55e2a3e004d76c75fb791b78cdd7655@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-08-30",
+      "end": "2026-08-31",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "89d6fa54e040553f968571266f584a4b@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-09-01",
+      "end": "2026-09-02",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "1b43064ada4614bdf79678a8499e3e57@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-09-11",
+      "end": "2026-09-12",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "ad6a673451948f598759b44bc4b3a16b@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2026-09-26",
+      "end": "2026-09-27",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "7f461436645cf09d66c6f672058afeec@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2027-06-01",
+      "end": "2027-06-04",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "e577514fc0447d0948d39f9207f3c5ea@booking.com",
+      "studio": "studio2",
+      "source": "booking",
+      "start": "2027-09-01",
+      "end": "2027-12-16",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "3495e7ce642663173dfb8f1cf0aef5ad@booking.com",
+      "studio": "studio3",
+      "source": "booking",
+      "start": "2026-06-19",
+      "end": "2026-06-20",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "e4a5b3bbfd76b160962026f9ca6b5750@booking.com",
+      "studio": "studio3",
+      "source": "booking",
+      "start": "2026-06-20",
+      "end": "2026-06-21",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "994b1ee0b730b6d3bf1ed05755285ab1@booking.com",
+      "studio": "studio3",
+      "source": "booking",
+      "start": "2026-07-11",
+      "end": "2026-07-12",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "1b86281af54b8fd42c979cb9c3eb5267@booking.com",
+      "studio": "studio3",
+      "source": "booking",
+      "start": "2026-07-17",
+      "end": "2026-07-18",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "8abdb92acf4b2ebe5612e5dd4f7a4312@booking.com",
+      "studio": "studio3",
+      "source": "booking",
+      "start": "2026-07-25",
+      "end": "2026-07-26",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "36efedfd8210555df5b45c447203a902@booking.com",
+      "studio": "studio3",
+      "source": "booking",
+      "start": "2026-07-28",
+      "end": "2026-07-29",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "cc800c5b472da58048425b2639004e93@booking.com",
+      "studio": "studio3",
+      "source": "booking",
+      "start": "2026-08-03",
+      "end": "2026-08-06",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "d99e74cebc6b46d6091ff69ddbcad0f3@booking.com",
+      "studio": "studio3",
+      "source": "booking",
+      "start": "2026-08-07",
+      "end": "2026-08-09",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "f5a24fd614a1373caedb7096c43093c3@booking.com",
+      "studio": "studio3",
+      "source": "booking",
+      "start": "2026-08-15",
+      "end": "2026-08-16",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "92430bd82d94c2e6cf18039e0408d634@booking.com",
+      "studio": "studio3",
+      "source": "booking",
+      "start": "2026-08-18",
+      "end": "2026-08-19",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "1bfe576ff71e803f9da3f060a23c3eb3@booking.com",
+      "studio": "studio3",
+      "source": "booking",
+      "start": "2026-08-22",
+      "end": "2026-08-23",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "0a2ebe3582be81da5b0301aa3d3a4a26@booking.com",
+      "studio": "studio3",
+      "source": "booking",
+      "start": "2026-08-25",
+      "end": "2026-08-26",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "eaf4b0078a389daeeac66c06fe807ed9@booking.com",
+      "studio": "studio3",
+      "source": "booking",
+      "start": "2026-08-26",
+      "end": "2026-08-27",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "534a22a7d545894b6caab2028c3a8999@booking.com",
+      "studio": "studio3",
+      "source": "booking",
+      "start": "2026-08-28",
+      "end": "2026-08-30",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "d8c6a004e5c9100bcd47a2057a52b856@booking.com",
+      "studio": "studio3",
+      "source": "booking",
+      "start": "2026-09-02",
+      "end": "2026-09-03",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    },
+    {
+      "id": "aa0e7f5737195b6da4da71143f9956b9@booking.com",
+      "studio": "studio3",
+      "source": "booking",
+      "start": "2027-08-17",
+      "end": "2027-08-21",
+      "name": "Indisponible",
+      "notes": "",
+      "local": false
+    }
+  ]
+}
