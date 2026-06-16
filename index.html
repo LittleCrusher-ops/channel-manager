@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Channel Manager — Studios</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #181c27;
+    --surface2: #1e2333;
+    --border: #2a3045;
+    --accent: #4f8ef7;
+    --accent2: #f7794f;
+    --green: #3ecf8e;
+    --yellow: #f5c842;
+    --red: #f75f5f;
+    --text: #e8eaf0;
+    --text2: #8b92a8;
+    --text3: #5a6278;
+    --airbnb: #ff5a5f;
+    --booking: #003580;
+    --booking-light: #4a90d9;
+    --direct: #3ecf8e;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: -0.3px;
+  }
+
+  .logo-icon {
+    width: 32px; height: 32px;
+    background: var(--accent);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sync-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text2);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .sync-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s infinite;
+  }
+
+  .sync-dot.loading { background: var(--yellow); animation: spin-dot 1s linear infinite; }
+  .sync-dot.error { background: var(--red); animation: none; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.4; }
+  }
+
+  /* MAIN LAYOUT */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 24px;
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text3);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .stat-value {
+    font-size: 26px;
+    font-weight: 700;
+    font-family: 'DM Mono', monospace;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .stat-sub {
+    font-size: 11px;
+    color: var(--text2);
+    margin-top: 4px;
+  }
+
+  /* CONTROLS */
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .controls-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .btn:hover { background: var(--surface2); border-color: var(--accent); color: var(--accent); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.primary:hover { background: #3a7ae8; border-color: #3a7ae8; color: #fff; }
+  .btn.danger { border-color: var(--red); color: var(--red); }
+  .btn.danger:hover { background: rgba(247,95,95,0.1); }
+
+  .filter-group {
+    display: flex;
+    gap: 4px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 3px;
+  }
+
+  .filter-btn {
+    padding: 5px 12px;
+    border-radius: 4px;
+    border: none;
+    background: transparent;
+    color: var(--text2);
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-weight: 500;
+  }
+
+  .filter-btn.active {
+    background: var(--surface2);
+    color: var(--text);
+  }
+
+  /* CALENDAR */
+  .calendar-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  .calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .calendar-title {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .month-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .month-label {
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 140px;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .nav-btn {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--text);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    transition: all 0.15s;
+  }
+
+  .nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* STUDIOS SIDE BY SIDE */
+  .studios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .studio-col {
+    border-right: 1px solid var(--border);
+  }
+  .studio-col:last-child { border-right: none; }
+
+  .studio-header {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface2);
+  }
+
+  .studio-name {
+    font-weight: 700;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .studio-badge {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+  .studio2 .studio-badge { background: var(--accent); }
+  .studio3 .studio-badge { background: var(--accent2); }
+
+  .studio-occ {
+    font-size: 11px;
+    color: var(--text2);
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* CALENDAR GRID */
+  .cal-grid {
+    padding: 16px;
+  }
+
+  .cal-days-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    margin-bottom: 6px;
+  }
+
+  .cal-day-name {
+    text-align: center;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--text3);
+    font-weight: 600;
+    padding: 4px 0;
+  }
+
+  .cal-cells {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+  }
+
+  .cal-cell {
+    aspect-ratio: 1;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.1s;
+    position: relative;
+    min-height: 36px;
+  }
+
+  .cal-cell.empty { cursor: default; }
+  .cal-cell.today { outline: 1.5px solid var(--accent); }
+
+  .cal-cell.free {
+    background: var(--surface2);
+    color: var(--text2);
+  }
+  .cal-cell.free:hover { background: var(--border); color: var(--text); }
+
+  .cal-cell.booked-airbnb {
+    background: rgba(255,90,95,0.25);
+    color: var(--airbnb);
+    border: 1px solid rgba(255,90,95,0.4);
+  }
+
+  .cal-cell.booked-booking {
+    background: rgba(74,144,217,0.25);
+    color: var(--booking-light);
+    border: 1px solid rgba(74,144,217,0.4);
+  }
+
+  .cal-cell.booked-direct {
+    background: rgba(62,207,142,0.2);
+    color: var(--green);
+    border: 1px solid rgba(62,207,142,0.35);
+  }
+
+  .cal-cell .day-num {
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .cal-cell .src-icon {
+    font-size: 8px;
+    margin-top: 2px;
+    opacity: 0.85;
+  }
+
+  /* LEGEND */
+  .legend {
+    display: flex;
+    gap: 16px;
+    padding: 12px 20px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--text2);
+  }
+
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 3px;
+  }
+
+  /* RESERVATIONS LIST */
+  .reservations-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .section-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .section-title {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th {
+    text-align: left;
+    padding: 10px 20px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    color: var(--text3);
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+  }
+
+  td {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    vertical-align: middle;
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--surface2); }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+
+  .badge.airbnb { background: rgba(255,90,95,0.2); color: var(--airbnb); }
+  .badge.booking { background: rgba(74,144,217,0.2); color: var(--booking-light); }
+  .badge.direct { background: rgba(62,207,142,0.2); color: var(--green); }
+
+  .badge-studio {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .badge-studio.s2 { background: rgba(79,142,247,0.2); color: var(--accent); }
+  .badge-studio.s3 { background: rgba(247,121,79,0.2); color: var(--accent2); }
+
+  .nights-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text2);
+  }
+
+  .action-btn {
+    width: 28px; height: 28px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text2);
+    cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    transition: all 0.1s;
+  }
+  .action-btn:hover { border-color: var(--red); color: var(--red); }
+
+  .empty-state {
+    text-align: center;
+    padding: 48px 20px;
+    color: var(--text3);
+  }
+  .empty-state .icon { font-size: 32px; margin-bottom: 10px; }
+  .empty-state .msg { font-size: 13px; }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(3px);
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    width: 100%;
+    max-width: 460px;
+    padding: 28px;
+    position: relative;
+  }
+
+  .modal-title {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 22px;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    padding: 9px 12px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+  select option { background: var(--surface2); }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
+    justify-content: flex-end;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text2);
+    cursor: pointer;
+    font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .close-btn:hover { color: var(--text); border-color: var(--text2); }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 18px;
+    font-size: 13px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transform: translateY(80px);
+    opacity: 0;
+    transition: all 0.3s;
+    max-width: 300px;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast.success { border-color: var(--green); }
+  .toast.error { border-color: var(--red); }
+
+  /* CONFLICT BADGE */
+  .conflict-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 7px;
+    background: rgba(247,95,95,0.2);
+    color: var(--red);
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    .studios-grid { grid-template-columns: 1fr; }
+    .studio-col { border-right: none; border-bottom: 1px solid var(--border); }
+    .container { padding: 16px; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">🏠</div>
+    Channel Manager
+  </div>
+  <div class="header-right">
+    <div class="sync-status" id="syncStatus">
+      <div class="sync-dot" id="syncDot"></div>
+      <span id="syncLabel">En attente de sync...</span>
+    </div>
+    <button class="btn" onclick="refreshData()">🔄 Sync</button>
+    <button class="btn primary" onclick="openModal()">+ Réservation</button>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-card">
+      <div class="stat-label">Ce mois</div>
+      <div class="stat-value" id="statTotal">0</div>
+      <div class="stat-sub">réservations au total</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Studio 2</div>
+      <div class="stat-value" id="statS2" style="color:var(--accent)">0%</div>
+      <div class="stat-sub">taux d'occupation</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Studio 3</div>
+      <div class="stat-value" id="statS3" style="color:var(--accent2)">0%</div>
+      <div class="stat-sub">taux d'occupation</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Conflits</div>
+      <div class="stat-value" id="statConflicts" style="color:var(--red)">0</div>
+      <div class="stat-sub">doublons détectés</div>
+    </div>
+  </div>
+
+  <!-- CALENDAR -->
+  <div class="calendar-section">
+    <div class="calendar-header">
+      <div class="calendar-title">Vue calendrier</div>
+      <div class="month-nav">
+        <button class="nav-btn" onclick="changeMonth(-1)">‹</button>
+        <div class="month-label" id="monthLabel"></div>
+        <button class="nav-btn" onclick="changeMonth(1)">›</button>
+      </div>
+      <div class="filter-group">
+        <button class="filter-btn active" onclick="setFilter('all', this)">Tous</button>
+        <button class="filter-btn" onclick="setFilter('studio2', this)">Studio 2</button>
+        <button class="filter-btn" onclick="setFilter('studio3', this)">Studio 3</button>
+      </div>
+    </div>
+
+    <div class="studios-grid">
+      <div class="studio-col studio2">
+        <div class="studio-header">
+          <div class="studio-name"><div class="studio-badge"></div>Studio 2</div>
+          <div class="studio-occ" id="occ2">—</div>
+        </div>
+        <div class="cal-grid">
+          <div class="cal-days-header">
+            <div class="cal-day-name">Lun</div>
+            <div class="cal-day-name">Mar</div>
+            <div class="cal-day-name">Mer</div>
+            <div class="cal-day-name">Jeu</div>
+            <div class="cal-day-name">Ven</div>
+            <div class="cal-day-name">Sam</div>
+            <div class="cal-day-name">Dim</div>
+          </div>
+          <div class="cal-cells" id="cal2"></div>
+        </div>
+      </div>
+      <div class="studio-col studio3">
+        <div class="studio-header">
+          <div class="studio-name"><div class="studio-badge"></div>Studio 3</div>
+          <div class="studio-occ" id="occ3">—</div>
+        </div>
+        <div class="cal-grid">
+          <div class="cal-days-header">
+            <div class="cal-day-name">Lun</div>
+            <div class="cal-day-name">Mar</div>
+            <div class="cal-day-name">Mer</div>
+            <div class="cal-day-name">Jeu</div>
+            <div class="cal-day-name">Ven</div>
+            <div class="cal-day-name">Sam</div>
+            <div class="cal-day-name">Dim</div>
+          </div>
+          <div class="cal-cells" id="cal3"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--airbnb)"></div>Airbnb</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--booking-light)"></div>Booking</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>Direct</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--surface2);border:1px solid var(--border)"></div>Libre</div>
+    </div>
+  </div>
+
+  <!-- RESERVATIONS LIST -->
+  <div class="reservations-section">
+    <div class="section-header">
+      <div class="section-title">Toutes les réservations</div>
+      <div class="filter-group">
+        <button class="filter-btn active" onclick="setSourceFilter('all', this)">Toutes</button>
+        <button class="filter-btn" onclick="setSourceFilter('airbnb', this)">Airbnb</button>
+        <button class="filter-btn" onclick="setSourceFilter('booking', this)">Booking</button>
+        <button class="filter-btn" onclick="setSourceFilter('direct', this)">Direct</button>
+      </div>
+    </div>
+    <div id="reservationsList"></div>
+  </div>
+</div>
+
+<!-- MODAL AJOUT -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="close-btn" onclick="closeModal()">✕</button>
+    <div class="modal-title" id="modalTitle">Nouvelle réservation</div>
+    <div class="form-group">
+      <label>Studio</label>
+      <select id="fStudio">
+        <option value="studio2">Studio 2</option>
+        <option value="studio3">Studio 3</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Source</label>
+      <select id="fSource">
+        <option value="direct">Direct</option>
+        <option value="airbnb">Airbnb</option>
+        <option value="booking">Booking</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Arrivée</label>
+        <input type="date" id="fStart">
+      </div>
+      <div class="form-group">
+        <label>Départ</label>
+        <input type="date" id="fEnd">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Nom du voyageur</label>
+      <input type="text" id="fName" placeholder="Ex: Marie Dupont">
+    </div>
+    <div class="form-group">
+      <label>Notes (optionnel)</label>
+      <textarea id="fNotes" rows="2" placeholder="Arrivée tardive, animaux..."></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal()">Annuler</button>
+      <button class="btn primary" onclick="saveReservation()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ─── STATE ───────────────────────────────────────────────────────────────────
+let reservations = JSON.parse(localStorage.getItem('cm_reservations') || '[]');
+let currentMonth = new Date().getMonth();
+let currentYear = new Date().getFullYear();
+let calFilter = 'all';
+let sourceFilter = 'all';
+let editingId = null;
+
+// iCal sources (updated by Python script via data.json)
+const ICAL_SOURCES = {
+  studio2_airbnb: 'https://www.airbnb.com/calendar/ical/35675888.ics?t=1873b27e2b5545dfa16da26fcd99d208&locale=fr',
+  studio3_airbnb: 'https://www.airbnb.com/calendar/ical/35678162.ics?t=c56940a00b8448a993418e139e89e170&locale=fr',
+  studio2_booking: 'https://ical.booking.com/v1/export?t=8edb097a-46f5-4fc4-b350-761d52b6a694',
+  studio3_booking: 'https://ical.booking.com/v1/export?t=604cca5d-bf32-4a15-96b2-5e36d23936e6'
+};
+
+// ─── DATA LOADING ─────────────────────────────────────────────────────────────
+async function loadRemoteData() {
+  setSyncStatus('loading', 'Synchronisation...');
+  try {
+    const res = await fetch('data.json?t=' + Date.now());
+    if (!res.ok) throw new Error('data.json introuvable');
+    const data = await res.json();
+    
+    // Merge remote reservations (from iCal) with local ones
+    const localDirect = reservations.filter(r => r.source === 'direct' || r.local === true);
+    const remote = data.reservations || [];
+    reservations = [...localDirect, ...remote];
+    localStorage.setItem('cm_reservations', JSON.stringify(reservations));
+    
+    setSyncStatus('ok', 'Syncronisé ' + formatTime(new Date()));
+    render();
+  } catch(e) {
+    setSyncStatus('error', 'Sync impossible — mode local');
+    render();
+  }
+}
+
+function formatTime(d) {
+  return d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+}
+
+function setSyncStatus(state, label) {
+  document.getElementById('syncLabel').textContent = label;
+  const dot = document.getElementById('syncDot');
+  dot.className = 'sync-dot';
+  if (state === 'loading') dot.classList.add('loading');
+  if (state === 'error') dot.classList.add('error');
+}
+
+function refreshData() { loadRemoteData(); }
+
+// ─── RENDER ───────────────────────────────────────────────────────────────────
+function render() {
+  renderCalendar('cal2', 'studio2');
+  renderCalendar('cal3', 'studio3');
+  renderStats();
+  renderList();
+}
+
+function renderCalendar(containerId, studio) {
+  const el = document.getElementById(containerId);
+  const year = currentYear, month = currentMonth;
+
+  // Month label
+  const months = ['Janvier','Février','Mars','Avril','Mai','Juin',
+                  'Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+  document.getElementById('monthLabel').textContent = months[month] + ' ' + year;
+
+  const firstDay = new Date(year, month, 1);
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  // Monday-based offset
+  let startOffset = firstDay.getDay() - 1;
+  if (startOffset < 0) startOffset = 6;
+
+  const today = new Date();
+  const bookedDays = getBookedDays(studio, year, month);
+
+  let html = '';
+
+  // Empty cells
+  for (let i = 0; i < startOffset; i++) {
+    html += '<div class="cal-cell empty"></div>';
+  }
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const date = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const isToday = (d === today.getDate() && month === today.getMonth() && year === today.getFullYear());
+    const booking = bookedDays[date];
+
+    let cls = 'cal-cell';
+    let icon = '';
+    if (isToday) cls += ' today';
+    if (booking) {
+      cls += ' booked-' + booking.source;
+      icon = booking.source === 'airbnb' ? 'A' : booking.source === 'booking' ? 'B' : 'D';
+    } else {
+      cls += ' free';
+    }
+
+    const title = booking ? `${booking.name || ''} (${booking.source})` : 'Libre';
+    html += `<div class="${cls}" title="${title}" onclick="onDayClick('${date}','${studio}')">
+      <span class="day-num">${d}</span>
+      ${icon ? `<span class="src-icon">${icon}</span>` : ''}
+    </div>`;
+  }
+
+  el.innerHTML = html;
+
+  // Occupation
+  const totalBooked = Object.keys(bookedDays).length;
+  const pct = Math.round((totalBooked / daysInMonth) * 100);
+  const occEl = document.getElementById(studio === 'studio2' ? 'occ2' : 'occ3');
+  occEl.textContent = `${pct}% occupé · ${totalBooked}j/${daysInMonth}j`;
+}
+
+function getBookedDays(studio, year, month) {
+  const result = {};
+  reservations.forEach(r => {
+    if (r.studio !== studio) return;
+    if (sourceFilter !== 'all' && r.source !== sourceFilter) return;
+    
+    const start = new Date(r.start + 'T12:00:00');
+    const end = new Date(r.end + 'T12:00:00');
+    for (let d = new Date(start); d < end; d.setDate(d.getDate() + 1)) {
+      if (d.getFullYear() === year && d.getMonth() === month) {
+        const key = d.toISOString().slice(0, 10);
+        result[key] = r;
+      }
+    }
+  });
+  return result;
+}
+
+function renderStats() {
+  const year = currentYear, month = currentMonth;
+  const inMonth = reservations.filter(r => {
+    const s = new Date(r.start);
+    return s.getFullYear() === year && s.getMonth() === month;
+  });
+
+  document.getElementById('statTotal').textContent = inMonth.length;
+
+  // Occupation rates
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  ['studio2','studio3'].forEach((s, i) => {
+    const days = Object.keys(getBookedDays(s, year, month)).length;
+    const pct = Math.round((days / daysInMonth) * 100);
+    document.getElementById(i === 0 ? 'statS2' : 'statS3').textContent = pct + '%';
+  });
+
+  // Conflicts: overlapping reservations on same studio same day
+  let conflicts = 0;
+  ['studio2','studio3'].forEach(s => {
+    const days = {};
+    reservations.filter(r => r.studio === s).forEach(r => {
+      const start = new Date(r.start + 'T12:00:00');
+      const end = new Date(r.end + 'T12:00:00');
+      for (let d = new Date(start); d < end; d.setDate(d.getDate() + 1)) {
+        const key = d.toISOString().slice(0, 10);
+        days[key] = (days[key] || 0) + 1;
+        if (days[key] === 2) conflicts++;
+      }
+    });
+  });
+  document.getElementById('statConflicts').textContent = conflicts;
+}
+
+function renderList() {
+  const container = document.getElementById('reservationsList');
+  
+  let filtered = [...reservations];
+  if (sourceFilter !== 'all') filtered = filtered.filter(r => r.source === sourceFilter);
+  if (calFilter !== 'all') filtered = filtered.filter(r => r.studio === calFilter);
+
+  // Sort by start date
+  filtered.sort((a, b) => new Date(a.start) - new Date(b.start));
+
+  // Only show upcoming + recent (last 30 days)
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - 30);
+  filtered = filtered.filter(r => new Date(r.end) >= cutoff);
+
+  if (!filtered.length) {
+    container.innerHTML = `<div class="empty-state">
+      <div class="icon">📭</div>
+      <div class="msg">Aucune réservation trouvée</div>
+    </div>`;
+    return;
+  }
+
+  const rows = filtered.map(r => {
+    const nights = Math.round((new Date(r.end) - new Date(r.start)) / 86400000);
+    const srcLabel = r.source === 'airbnb' ? '✈ Airbnb' : r.source === 'booking' ? '🏨 Booking' : '👤 Direct';
+    const conflict = hasConflict(r) ? '<span class="conflict-badge">⚠ Conflit</span>' : '';
+    const studioNum = r.studio === 'studio2' ? '2' : '3';
+    const studioClass = r.studio === 'studio2' ? 's2' : 's3';
+    
+    return `<tr>
+      <td><span class="badge-studio ${studioClass}">Studio ${studioNum}</span></td>
+      <td><span class="badge ${r.source}">${srcLabel}</span></td>
+      <td>${formatDate(r.start)}</td>
+      <td>${formatDate(r.end)}</td>
+      <td><span class="nights-badge">${nights} nuit${nights > 1 ? 's' : ''}</span></td>
+      <td>${r.name || '—'}</td>
+      <td>${conflict || (r.notes ? '<span style="color:var(--text2);font-size:12px">'+r.notes+'</span>' : '—')}</td>
+      <td>
+        ${r.local !== false ? `<button class="action-btn" onclick="editReservation('${r.id}')" title="Modifier">✏</button>
+        <button class="action-btn" onclick="deleteReservation('${r.id}')" title="Supprimer">🗑</button>` : ''}
+      </td>
+    </tr>`;
+  }).join('');
+
+  container.innerHTML = `<table>
+    <thead><tr>
+      <th>Studio</th><th>Source</th><th>Arrivée</th><th>Départ</th>
+      <th>Durée</th><th>Voyageur</th><th>Notes</th><th></th>
+    </tr></thead>
+    <tbody>${rows}</tbody>
+  </table>`;
+}
+
+function hasConflict(r) {
+  const start = new Date(r.start + 'T12:00:00');
+  const end = new Date(r.end + 'T12:00:00');
+  return reservations.some(other => {
+    if (other.id === r.id || other.studio !== r.studio) return false;
+    const os = new Date(other.start + 'T12:00:00');
+    const oe = new Date(other.end + 'T12:00:00');
+    return start < oe && end > os;
+  });
+}
+
+function formatDate(str) {
+  const d = new Date(str + 'T12:00:00');
+  return d.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+}
+
+// ─── MODAL ───────────────────────────────────────────────────────────────────
+function openModal(date, studio) {
+  editingId = null;
+  document.getElementById('modalTitle').textContent = 'Nouvelle réservation';
+  document.getElementById('fStudio').value = studio || 'studio2';
+  document.getElementById('fSource').value = 'direct';
+  document.getElementById('fStart').value = date || '';
+  document.getElementById('fEnd').value = '';
+  document.getElementById('fName').value = '';
+  document.getElementById('fNotes').value = '';
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function editReservation(id) {
+  const r = reservations.find(x => x.id === id);
+  if (!r) return;
+  editingId = id;
+  document.getElementById('modalTitle').textContent = 'Modifier la réservation';
+  document.getElementById('fStudio').value = r.studio;
+  document.getElementById('fSource').value = r.source;
+  document.getElementById('fStart').value = r.start;
+  document.getElementById('fEnd').value = r.end;
+  document.getElementById('fName').value = r.name || '';
+  document.getElementById('fNotes').value = r.notes || '';
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
+function closeModalOutside(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
+
+function saveReservation() {
+  const studio = document.getElementById('fStudio').value;
+  const source = document.getElementById('fSource').value;
+  const start = document.getElementById('fStart').value;
+  const end = document.getElementById('fEnd').value;
+  const name = document.getElementById('fName').value.trim();
+  const notes = document.getElementById('fNotes').value.trim();
+
+  if (!start || !end) { showToast('Veuillez renseigner les dates', 'error'); return; }
+  if (new Date(end) <= new Date(start)) { showToast('La date de départ doit être après l\'arrivée', 'error'); return; }
+
+  if (editingId) {
+    const idx = reservations.findIndex(r => r.id === editingId);
+    if (idx !== -1) reservations[idx] = { ...reservations[idx], studio, source, start, end, name, notes, local: true };
+    showToast('Réservation modifiée ✓', 'success');
+  } else {
+    reservations.push({
+      id: 'local_' + Date.now(),
+      studio, source, start, end, name, notes,
+      local: true
+    });
+    showToast('Réservation ajoutée ✓', 'success');
+  }
+
+  localStorage.setItem('cm_reservations', JSON.stringify(reservations));
+  closeModal();
+  render();
+}
+
+function deleteReservation(id) {
+  if (!confirm('Supprimer cette réservation ?')) return;
+  reservations = reservations.filter(r => r.id !== id);
+  localStorage.setItem('cm_reservations', JSON.stringify(reservations));
+  showToast('Réservation supprimée', 'success');
+  render();
+}
+
+// ─── CALENDAR INTERACTIONS ────────────────────────────────────────────────────
+function onDayClick(date, studio) {
+  const bookedDays = getBookedDays(studio, currentYear, currentMonth);
+  if (bookedDays[date]) return; // already booked, do nothing
+  openModal(date, studio);
+}
+
+function changeMonth(dir) {
+  currentMonth += dir;
+  if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+  if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+  render();
+}
+
+function setFilter(f, btn) {
+  calFilter = f;
+  document.querySelectorAll('.controls .filter-btn, .calendar-header .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function setSourceFilter(f, btn) {
+  sourceFilter = f;
+  btn.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+// ─── TOAST ───────────────────────────────────────────────────────────────────
+function showToast(msg, type = 'success') {
+  const t = document.getElementById('toast');
+  t.textContent = (type === 'success' ? '✓ ' : '✕ ') + msg;
+  t.className = 'toast ' + type;
+  setTimeout(() => t.classList.add('show'), 10);
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+render();
+loadRemoteData();
+// Auto refresh every 60 minutes
+setInterval(loadRemoteData, 60 * 60 * 1000);
+</script>
+</body>
+</html>
